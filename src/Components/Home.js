@@ -1,22 +1,25 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
+import Table from './Table';
 
 class Home extends Component{
-    constructor(props){
+
+    constructor(props) {
         super(props);
     }
 
-    clickLogout = () => {
+    toLogout=()=>{
         this.props.history.push("/")
     }
+
     render() {
         return(
             <div>
-                 <h1>Welcome to Home Page!</h1>
-                 <span>Click here to Looout</span>
-                 <button onChange={this.clickLogout}>Logout</button>
+                <span>Welcome to Home Page!</span><br /><br />
+                <Table />
+                <button onClick={this.toLogout}>Logout</button>
             </div>
-        );
+        )
     }
 }
 
-export default Home;
+export default Home
