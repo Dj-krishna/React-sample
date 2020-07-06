@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 //import "./style.module.css";
 
-class Table extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            details: [{isActive: true, _id: "5c4cc2109487b0003924f1e3", 
+ const details= [{isActive: true, _id: "5c4cc2109487b0003924f1e3", 
                                         role: "Administrator", 
                                         firstName: "Test", 
                                         lastName: "Admin"}, 
@@ -17,8 +13,6 @@ class Table extends Component{
                                         role: "Volunteer", 
                                         firstName: "Volunteer 1", 
                                         lastName: "Test"}]
-        }
-    }
 
    /*renderTableHeader(){
         let header = Object.keys(this.state.details)
@@ -38,45 +32,49 @@ class Table extends Component{
                 </tr>
             )
     }*/
-    
-    renderTableData() {
-        return this.state.details.map((info, index)=> 
+
+    const Theader = () =>{
+        return(
+            <tr>
+            <th>_id</th>
+            <th>role</th>
+            <th>firstName</th>
+            <th>lastName</th>
+        </tr>
+        )
+    }
+     
+    const TableData = (props) => {
+       return props.details.map((info, index)=> 
         { const { _id, role, firstName, lastName} = info
 
             return(
-                <tr key = {index}>
-                    <td>{_id}</td>
-                    <td>{role}</td>
-                    <td>{firstName}</td>
-                    <td>{lastName}</td>
+                <tr>
+                    <td>{props.details._id}</td>
+                    <td>{props.details.role}</td>
+                    <td>{props.details.firstName}</td>
+                    <td>{props.details.lastName}</td>
                 </tr>
             )
 
-        })
-    }
-    render() {
-        return(
-            <div className="container">
-                <h3>React Dynamic Table!</h3>
-                <div style={{paddingLeft:"33%"}}>
-                <table id='details' style={{borderCollapse: "collapse"}} 
-                                    style={{border: "2px solid blue"}}>
-                    <thead>
-                        <tr>
-                            <th>_id</th>
-                            <th>role</th>
-                            <th>firstName</th>
-                            <th>lastName</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                          {this.renderTableData()}
-                    </tbody>
+        }
+    
+    const UserTable = (props) =>{
+            return(
+               
+            <div>
+                <table>
+                    <Theader />
+                    {
+                        props.TableData.map(TableData =>{
+                            return <TableData TableData={details} />
+                        })
+                       
+                    }
                 </table>
-                </div>
             </div>
-        )
+           )
+        }
     }
-}
 
-export default Table
+export default UserTable
