@@ -1,4 +1,60 @@
-import React from 'react';
+import React from 'react'
+import './Style.css'
+
+const UserHeader = () => {
+    return (<tr>
+        <th>_id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Role Name</th>
+        <th>Active</th>
+    </tr>)
+}
+
+const UserData = (props) => {
+    return (<tr>
+        <td>{props.user._id}</td>
+        <td>{props.user.firstName}</td>
+        <td>{props.user.lastName}</td>
+        <td>{props.user.role}</td>
+        <td><input type="checkbox" checked={props.user.isActive} /></td>
+        <td><button>DELETE</button></td>
+    </tr>)
+}
+
+const TableStyle = {
+ //   textAlign: 'center',
+ //   borderCollapse: 'collapse',
+ //   border: '2px solid blue',
+    width: '90%'
+}
+
+//const HeaderStyle={
+//    border: '1px solid #ddd',
+//  padding: '8px'
+//}
+
+const UserTable = (props) => {
+    return (
+        <div>
+            <table style={TableStyle}>
+                <UserHeader/>
+                {
+                    props.userData.map(user => {
+                        return < UserData user={user} />
+                    })
+                }
+            </table>
+        </div>
+    )
+}
+
+export default UserTable;
+
+
+
+
+/*import React from 'react';
 //import "./style.module.css";
 
  const details= [{isActive: true, _id: "5c4cc2109487b0003924f1e3", 
@@ -33,7 +89,7 @@ import React from 'react';
             )
     }*/
 
-    const Theader = () =>{
+/*    const Theader = () =>{
         return(
             <tr>
             <th>_id</th>
@@ -45,7 +101,7 @@ import React from 'react';
     }
      
     const TableData = (props) => {
-       return props.details.map((info, index)=> 
+       return details.map((info, index)=> 
         { const { _id, role, firstName, lastName} = info
 
             return(
@@ -67,7 +123,7 @@ import React from 'react';
                     <Theader />
                     {
                         props.TableData.map(TableData =>{
-                            return <TableData TableData={details} />
+                            return <TableData details={TableData} />
                         })
                        
                     }
@@ -77,4 +133,4 @@ import React from 'react';
         }
     }
 
-export default UserTable
+export default UserTable */
