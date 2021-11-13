@@ -1,5 +1,5 @@
 import React from 'react'
-import './Style.css'
+import './style.module.css'
 
 const UserHeader = () => {
     return (<tr>

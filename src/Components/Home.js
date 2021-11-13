@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Table from './UserTable';
 import {getAllUsers} from '../actions/index';
 import {deleteData} from '../actions/index';
 import {connect} from 'react-redux';
+import UserTable from './Table';
 
 class Home extends Component{
 
@@ -25,7 +25,7 @@ class Home extends Component{
         return(
             <div>
                 <span>Welcome to Home Page!</span><br /><br />
-                <Table userData = {this.props.state.fetchUsers}/>
+                <UserTable userData = {this.props.state.fetchUsers}/>
                 <button onClick={this.toLogout}>Logout</button>
             </div>
         )
